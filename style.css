@@ -1,10 +1,12 @@
-@import url("https://fonts.googleapis.com/css?famiyl=Poppins:200,300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
 * {
-  margin: 10;
-  padding-right: 0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   display: flex;
   justify-content: center;
@@ -12,6 +14,7 @@ body {
   min-height: 100vh;
   background: #000000;
 }
+
 .card {
   position: relative;
   width: 550px;
@@ -21,11 +24,17 @@ body {
   align-items: center;
   transition: 0.5s;
   transition-delay: 0.5s;
+  cursor: pointer;
 }
-.card:hover {
+
+/* HOVER (desktop) + ACTIVE (mobile tap) */
+.card:hover,
+.card.active,
+.card:focus-within {
   width: 600px;
   transition-delay: 0.5s;
 }
+
 .card .circle {
   position: absolute;
   top: 0;
@@ -37,38 +46,50 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .card .circle::before {
   content: "";
   position: absolute;
-  top: 30;
-  left: 2;
-  right: 2;
+  top: 30px;
+  left: 2px;
+  right: 2px;
   width: 350px;
   height: 350px;
   border-radius: 50%;
   background: #191919;
   border: 8px solid var(--clr);
-  filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
+  filter: drop-shadow(0 0 10px var(--clr))
+          drop-shadow(0 0 60px var(--clr));
   transition: 0.5s, background 0.5s;
   transition-delay: 0.75s, 1s;
 }
-.card:hover .circle::before {
+
+/* Hover/Active үед томорно */
+.card:hover .circle::before,
+.card.active .circle::before,
+.card:focus-within .circle::before {
   transition-delay: 0.5s;
   width: 100%;
   height: 100%;
   border-radius: 20px;
   background: var(--clr);
 }
+
 .card .circle .logo {
   position: relative;
   width: 250px;
   transition: 0.5s;
   transition-delay: 0.5s;
 }
-.card:hover .circle .logo {
+
+/* Logo алга болно */
+.card:hover .circle .logo,
+.card.active .circle .logo,
+.card:focus-within .circle .logo {
   transform: scale(0);
   transition-delay: 0s;
 }
+
 .card .product_img {
   position: absolute;
   top: 50%;
@@ -77,39 +98,50 @@ body {
   height: 300px;
   transition: 0.5s ease-in-out;
 }
-.card:hover .product_img {
+
+/* Зураг гарч ирнэ */
+.card:hover .product_img,
+.card.active .product_img,
+.card:focus-within .product_img {
   transition-delay: 0.75s;
   top: 25%;
   left: 72%;
   height: 500px;
   transform: translate(-50%, -50%) scale(1) rotate(15deg);
 }
+
 .card .content {
   position: absolute;
   width: 50%;
   left: 20%;
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
   opacity: 0;
   transition: 0.5s;
   visibility: hidden;
 }
-.card:hover .content {
+
+/* Text гарч ирнэ */
+.card:hover .content,
+.card.active .content,
+.card:focus-within .content {
   transition-delay: 0.75s;
   opacity: 1;
   visibility: visible;
   left: 20px;
 }
+
 .card .content h2 {
   color: #fff;
   text-transform: uppercase;
-  font-size: 2.5em;
-  line-height: 1em;
+  font-size: 2.2em;
+  line-height: 1.2em;
 }
+
 .card .content p {
   color: #fff;
-  align-items:top;
-  margin-bottom: 75px;
+  margin-bottom: 40px;
 }
+
 .card .content a {
   position: relative;
   color: #111;
@@ -120,4 +152,9 @@ body {
   text-decoration: none;
   font-weight: 600;
   margin-top: 10px;
+  transition: 0.3s;
+}
+
+.card .content a:hover {
+  background: #ddd;
 }

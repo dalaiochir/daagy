@@ -6,16 +6,31 @@
   <link rel="stylesheet" href="./style.css">
 
 </head>
+
+<script>
+  const card = document.querySelector(".card");
+
+  // tap/click -> toggle active
+  card.addEventListener("click", (e) => {
+    e.stopPropagation();
+    card.classList.toggle("active");
+  });
+
+  // tap outside -> close
+  document.addEventListener("click", () => {
+    card.classList.remove("active");
+  });
+</script>
 <body>
 <!-- partial:index.partial.html -->
-<div class="card">
+<div class="card" tabindex="0">
   <div class="circle" style="--clr: #f40103">
     <img src="logo1.png" class="logo">
   </div>
   <div class="content">
+    
     <h2>
-      Муу явахад нөхөр олон
-    </br>Сайн явахад садан олон
+      Муу </br>явахад </br>нөхөр </br>олон</br>Сайн</br> явахад</br> садан</br> олон
     </h2>
     <p>TUGULDUR
     </p>
